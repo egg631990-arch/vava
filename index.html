@@ -8,7 +8,6 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
         
         body {
@@ -19,20 +18,6 @@
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
-            background-color: #1f1e1e; /* Фолбэк цвет, пока загружается изображение */
-        }
-        
-        /* Оптимизация для мобильных устройств */
-        @media screen and (max-width: 768px) {
-            body {
-                background-attachment: scroll; /* Для мобильных fixed может плохо работать */
-            }
-        }
-        
-        @media screen and (max-width: 480px) {
-            body {
-                background-position: center;
-            }
         }
     </style>
 </head>
