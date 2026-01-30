@@ -20,17 +20,24 @@ bottom: 120px;
 
 .icon-container {
 position: fixed;
-bottom: -55px;
+bottom: -15px;
 left: 0;
 right: 0;
 display: flex;
-justify-content: center;
+flex-direction: column;
+align-items: center;
 }
 
 .icon {
-width: 120px;
+width: 70px;
 height: auto;
 display: block;
+}
+
+.text {
+color: #626262;
+font-size: 20px;
+margin-top: 20px;
 }
 </style>
 </head>
@@ -38,6 +45,7 @@ display: block;
 <div class="strip"></div>
 <div class="icon-container">
 <img src="иконка-мины.png" alt="Иконка" class="icon">
+<div class="text">мины</div>
 </div>
 </body>
 </html>
