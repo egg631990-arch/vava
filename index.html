@@ -89,7 +89,9 @@ height: 30px;
 // Скрипт для переключения синих иконок
 document.addEventListener('DOMContentLoaded', function() {
 const navItems = document.querySelectorAll('.nav-item');
-let activeItem = null;
+let activeItem = document.querySelector('.nav-center'); // По умолчанию активна кнопка "Мины"
+const activeIcon = activeItem.querySelector('.nav-icon');
+activeIcon.src = activeItem.getAttribute('data-blue');
   
 navItems.forEach(item => {
 const icon = item.querySelector('.nav-icon');
@@ -99,22 +101,21 @@ const blueIcon = item.getAttribute('data-blue');
 item.addEventListener('click', function(e) {
 e.preventDefault();
       
+// Если кликнули на уже активную кнопку - ничего не делаем
+if (activeItem === this) {
+return;
+}
+      
 // Возвращаем предыдущую активную иконку к обычному состоянию
-if (activeItem && activeItem !== this) {
+if (activeItem) {
 const prevIcon = activeItem.querySelector('.nav-icon');
 const prevNormal = activeItem.getAttribute('data-normal');
 prevIcon.src = prevNormal;
 }
       
-// Если кликнули по уже активной иконке - возвращаем обычную
-if (activeItem === this) {
-icon.src = normalIcon;
-activeItem = null;
-} else {
-// Устанавливаем синюю иконку для активного элемента
+// Устанавливаем синюю иконку для новой активной кнопки
 icon.src = blueIcon;
 activeItem = this;
-}
 });
 });
 });
