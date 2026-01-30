@@ -39,6 +39,7 @@ text-decoration: none;
 width: 40px;
 height: 40px;
 margin-bottom: 5px;
+transition: all 0.3s ease;
 }
 
 .nav-center {
@@ -71,32 +72,52 @@ height: 30px;
 </head>
 <body>
 <nav class="navbar">
-<a href="#" class="nav-item">
-<img src="Иконка-игры.png" alt="Игры" class="nav-icon">
+<a href="#" class="nav-item" data-normal="Иконка-игры.png" data-blue="синяя-Иконка-игры.png">
+<img src="Иконка-игры.png" alt="Игры" class="nav-icon" id="games-icon">
 </a>
 
-<a href="#" class="nav-item nav-center">
-<img src="иконка-мины.png" alt="Мины" class="nav-icon">
+<a href="#" class="nav-item nav-center" data-normal="Иконка-мины.png" data-blue="синяя-иконка-мины.png">
+<img src="Иконка-мины.png" alt="Мины" class="nav-icon" id="mines-icon">
 </a>
 
-<a href="#" class="nav-item">
-<img src="Иконка-профиль.png" alt="Профиль" class="nav-icon">
+<a href="#" class="nav-item" data-normal="Иконка-профиль.png" data-blue="синяя-Иконка-профиль.png">
+<img src="Иконка-профиль.png" alt="Профиль" class="nav-icon" id="profile-icon">
 </a>
 </nav>
 
 <script>
-// Скрипт для активного состояния навигации
+// Скрипт для переключения синих иконок
 document.addEventListener('DOMContentLoaded', function() {
 const navItems = document.querySelectorAll('.nav-item');
+let activeItem = null;
+  
 navItems.forEach(item => {
+const icon = item.querySelector('.nav-icon');
+const normalIcon = item.getAttribute('data-normal');
+const blueIcon = item.getAttribute('data-blue');
+    
 item.addEventListener('click', function(e) {
 e.preventDefault();
-navItems.forEach(i => i.classList.remove('active'));
-this.classList.add('active');
+      
+// Возвращаем предыдущую активную иконку к обычному состоянию
+if (activeItem && activeItem !== this) {
+const prevIcon = activeItem.querySelector('.nav-icon');
+const prevNormal = activeItem.getAttribute('data-normal');
+prevIcon.src = prevNormal;
+}
+      
+// Если кликнули по уже активной иконке - возвращаем обычную
+if (activeItem === this) {
+icon.src = normalIcon;
+activeItem = null;
+} else {
+// Устанавливаем синюю иконку для активного элемента
+icon.src = blueIcon;
+activeItem = this;
+}
 });
 });
 });
 </script>
 </body>
 </html>
-
