@@ -15,60 +15,87 @@ align-items: center;
 justify-content: space-between;
 }
 
-.strip {
-background-color: #3D3D3D;
-height: 2px;
-width: 100%;
+.navbar {
 position: fixed;
-bottom: 130px;
-}
-
-.icon-container {
-position: fixed;
-bottom: 20px;
+bottom: 0;
 left: 0;
 right: 0;
 display: flex;
 justify-content: space-between;
-align-items: flex-end;
-padding: 0 20px;
-box-sizing: border-box;
+align-items: center;
+padding: 20px 40px;
+background-color: #252525;
+border-top: 1px solid #3D3D3D;
 }
 
-.icon {
-width: 70px;
-height: auto;
-display: block;
+.nav-item {
+display: flex;
+flex-direction: column;
+align-items: center;
+text-decoration: none;
 }
 
-.icon-left {
-align-self: flex-end;
+.nav-icon {
+width: 40px;
+height: 40px;
+margin-bottom: 5px;
 }
 
-.icon-right {
-align-self: flex-end;
+.nav-center {
+position: absolute;
+left: 50%;
+transform: translateX(-50%);
 }
 
 /* Адаптация для разных размеров экранов */
 @media (max-width: 480px) {
-.icon {
-width: 60px;
+.navbar {
+padding: 15px 30px;
+}
+.nav-icon {
+width: 35px;
+height: 35px;
 }
 }
 
 @media (max-width: 360px) {
-.icon {
-width: 50px;
+.navbar {
+padding: 12px 25px;
+}
+.nav-icon {
+width: 30px;
+height: 30px;
 }
 }
 </style>
 </head>
 <body>
-<div class="strip"></div>
-<div class="icon-container">
-<img src="Иконка-игры.png" alt="Игры" class="icon icon-left">
-<img src="иконка-мины.png" alt="Мины" class="icon icon-right">
-</div>
+<nav class="navbar">
+<a href="#" class="nav-item">
+<img src="иконка-игры.png" alt="Игры" class="nav-icon">
+</a>
+
+<a href="#" class="nav-item nav-center">
+<img src="иконка-мины.png" alt="Мины" class="nav-icon">
+</a>
+
+<a href="#" class="nav-item">
+<img src="иконка-профиль.png" alt="Профиль" class="nav-icon">
+</a>
+</nav>
+
+<script>
+// Скрипт для активного состояния навигации
+document.addEventListener('DOMContentLoaded', function() {
+const navItems = document.querySelectorAll('.nav-item');
+navItems.forEach(item => {
+item.addEventListener('click', function(e) {
+e.preventDefault();
+navItems.forEach(i => i.classList.remove('active'));
+this.classList.add('active');
+});
+});
+});
+</script>
 </body>
 </html>
-
