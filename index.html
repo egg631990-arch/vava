@@ -17,6 +17,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: space-between;
+position: relative;
 }
 
 .navbar {
@@ -54,6 +55,14 @@ left: 50%;
 transform: translateX(-50%);
 }
 
+.balance-icon {
+position: fixed;
+top: 40px;
+right: 20px;
+width: 150px;
+height: 150px;
+}
+
 /* Адаптация для разных размеров экранов */
 @media (max-width: 480px) {
 .navbar {
@@ -62,6 +71,12 @@ padding: 15px 30px;
 .nav-icon {
 width: 35px;
 height: 35px;
+}
+.balance-icon {
+width: 120px;
+height: 120px;
+top: 35px;
+right: 15px;
 }
 }
 
@@ -73,10 +88,18 @@ padding: 12px 25px;
 width: 30px;
 height: 30px;
 }
+.balance-icon {
+width: 100px;
+height: 100px;
+top: 30px;
+right: 10px;
+}
 }
 </style>
 </head>
 <body>
+<img src="балик.png" alt="Баланс" class="balance-icon">
+
 <nav class="navbar">
 <a href="#" class="nav-item" data-normal="иконка-игры.png" data-blue="синяя-иконка-игры.png">
 <img src="иконка-игры.png" alt="Игры" class="nav-icon" id="games-icon">
